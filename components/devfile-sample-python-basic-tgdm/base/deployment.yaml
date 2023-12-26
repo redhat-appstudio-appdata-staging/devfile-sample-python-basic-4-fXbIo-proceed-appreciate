@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: devfile-sample-python-basic-tgdm
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: devfile-sample-python-basic-tgdm
+    app.kubernetes.io/part-of: devfile-sample-python-basic-4
+  name: devfile-sample-python-basic-tgdm
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: devfile-sample-python-basic-tgdm
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.kubernetes.io/instance: devfile-sample-python-basic-tgdm
+    spec:
+      containers:
+      - image: quay.io/redhat-user-workloads-stage/beaumorley-tenant/devfile-sample-python-basic-4/devfile-sample-python-basic-tgdm@sha256:56967b153e631f58d18e65967b133a24505f365af90c8a610deaf4fc8f8cd767
+        imagePullPolicy: Always
+        name: container-image
+        ports:
+        - containerPort: 8081
+        resources:
+          requests:
+            cpu: 10m
+            memory: 256Mi
+status: {}
